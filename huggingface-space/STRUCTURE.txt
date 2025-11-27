@@ -1,0 +1,97 @@
+📊 PVB Flow - Hugging Face Spaces Edition
+==========================================
+
+Structure du projet déployable sur HF Spaces
+---------------------------------------------
+
+huggingface-space/
+│
+├── 📱 APPLICATION (déployé sur HF Spaces)
+│   ├── app.py                           ← Entry point Gradio
+│   ├── requirements.txt                 ← Dépendances (mistralai, gradio)
+│   ├── README.md                        ← Métadonnées HF + Doc utilisateur
+│   │
+│   └── src/                             ← Code source
+│       ├── __init__.py
+│       │
+│       ├── ai/                          ← Backend AI
+│       │   ├── __init__.py
+│       │   ├── mistral_api_analyzer.py  ← Client API Mistral ⭐
+│       │   └── prompts_config.py        ← Prompts système
+│       │
+│       ├── ui/                          ← Interface utilisateur
+│       │   ├── __init__.py
+│       │   └── spaces_interface.py      ← Interface Gradio v6 ⭐
+│       │
+│       ├── utils/                       ← Utilitaires
+│       │   ├── __init__.py
+│       │   └── json_validator.py        ← Validation PVB JSON
+│       │
+│       └── core/                        ← Logique métier
+│           ├── __init__.py
+│           ├── mermaid_encoder.py       ← Encodage URLs Mermaid Live ✅ FIXÉ
+│           └── mermaid_extractor.py     ← Extraction code Mermaid
+│
+├── 🛠️ OUTILS (local uniquement)
+│   ├── deploy.py                        ← Déploiement automatique ⭐
+│   ├── test_local.py                    ← Test local avant déploiement
+│   ├── .env.example                     ← Exemple de configuration
+│   └── .gitignore                       ← Fichiers à ignorer
+│
+└── 📚 DOCUMENTATION
+    ├── QUICK_START.md                   ← Démarrage rapide (3 étapes) 🚀
+    ├── DEPLOYMENT.md                    ← Guide de déploiement complet
+    └── LOCAL_README.md                  ← Documentation développeur
+
+Fichiers essentiels
+-------------------
+
+⭐ NOUVEAUX FICHIERS CRÉÉS:
+  • mistral_api_analyzer.py     - Client API Mistral (remplace MLX)
+  • spaces_interface.py          - Interface Gradio adaptée pour Spaces
+  • deploy.py                    - Script de déploiement automatique
+
+✅ FICHIERS CORRIGÉS:
+  • mermaid_encoder.py           - Fix encodage zlib.compress() avec header
+
+📋 FICHIERS COPIÉS:
+  • prompts_config.py            - Prompts système (depuis version locale)
+  • json_validator.py            - Validation PVB (depuis version locale)
+  • mermaid_extractor.py         - Extraction Mermaid (depuis version locale)
+
+Configuration requise
+---------------------
+
+Pour déploiement:
+  • HF_TOKEN                     - Token Hugging Face (write permissions)
+  • MISTRAL_API_KEY              - Clé API Mistral (secret du Space)
+
+Pour test local:
+  • MISTRAL_API_KEY              - Clé API Mistral (variable d'environnement)
+
+Commandes rapides
+-----------------
+
+🧪 Test local:
+  cd huggingface-space
+  export MISTRAL_API_KEY="xxx"
+  python3 test_local.py
+
+🚀 Déploiement:
+  cd huggingface-space
+  export HF_TOKEN="xxx"
+  export MISTRAL_API_KEY="xxx"
+  python3 deploy.py
+
+📱 URL après déploiement:
+  https://huggingface.co/spaces/VincentGOURBIN/PVB-Flow-Mermaid-Generator
+
+Documentation
+-------------
+
+📖 Quick Start       → QUICK_START.md       (3 étapes)
+📖 Déploiement       → DEPLOYMENT.md        (guide complet)
+📖 Développeur       → LOCAL_README.md      (documentation technique)
+📖 Vue d'ensemble    → ../HUGGINGFACE_DEPLOYMENT.md
+📖 Setup complet     → ../SETUP_COMPLETE.md
+

@@ -1,0 +1,14 @@
+# Web UI
+gradio>=6.0.0
+
+# AI Models - Transformers backend
+torch>=2.0.0
+transformers>=4.46.0
+accelerate>=0.20.0
+
+# MLX for Apple Silicon (optional but recommended)
+mlx>=0.19.0 ; sys_platform == "darwin"
+mlx-lm>=0.0.7 ; sys_platform == "darwin"
+
+# Utilities
+python-dotenv>=1.0.0
